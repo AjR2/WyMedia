@@ -49,6 +49,16 @@
       background-position: center 40%;
       will-change: transform;
     }
+    /* No parallax on touch — remove the inset bleed entirely */
+    @media (hover: none), (pointer: coarse) {
+      #hero-bg { inset: 0; background-position: center center; }
+    }
+
+    /* Hero height — svh accounts for mobile browser chrome */
+    .hero {
+      height: 100vh;
+      height: 100svh;
+    }
 
     /* ── Scanlines ── */
     .scanlines {
@@ -214,7 +224,7 @@
   </nav>
 
   <!-- ── HERO ── -->
-  <section class="h-screen min-h-[100dvh] flex items-center justify-center relative overflow-hidden">
+  <section class="hero flex items-center justify-center relative" style="overflow: clip">
     <div id="hero-bg"></div>
     <div class="scanlines"></div>
     <div class="absolute inset-0 bg-black/55 z-[2] pointer-events-none"></div>
